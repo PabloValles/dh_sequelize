@@ -1,9 +1,6 @@
-const { DataTypes } = require("sequelize/types");
-const { sequelize } = require(".");
-
 module.exports = (sequelize, DataTypes) => {
-  const alias = "Movies";
-  const cols = {
+  let alias = "Movies";
+  let cols = {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -35,9 +32,9 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: true,
     },
   };
-  const config = {
+  let config = {
     tableName: "movies",
-    //timestamp: false
+    timestamp: false,
   };
 
   const Movie = sequelize.define(alias, cols, config);
