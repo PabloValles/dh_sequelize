@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const alias = "Genres";
-  const cols = {
+  let alias = "Actors";
+  let cols = {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -12,21 +12,26 @@ module.exports = (sequelize, DataTypes) => {
     updated_at: {
       type: DataTypes.DATE,
     },
-    name: {
+    first_name: {
       type: DataTypes.STRING,
     },
-    ranking: {
-      type: DataTypes.INTEGER,
+    last_name: {
+      type: DataTypes.STRING,
     },
-    active: {
+    rating: {
+      type: DataTypes.DECIMAL,
+    },
+    favorite_movie_id: {
       type: DataTypes.INTEGER,
+      foreignKey: true,
     },
   };
-  const config = {
-    tableName: "genres",
+  let config = {
+    tableName: "actors",
     timestamps: false,
   };
 
-  const Genre = sequelize.define(alias, cols, config);
-  return Genre;
+  const Actor = sequelize.define(alias, cols, config);
+
+  return Actor;
 };
