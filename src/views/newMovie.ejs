@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Movie</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      form input,
+      select {
+        padding: 0.3rem;
+        margin-top: 0.3rem;
+      }
+      button[type="submit"] {
+        padding: 0.5rem 2rem;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <figure>
+      <img src="/img/logo-DH.png" alt="Logo Digital House" />
+    </figure>
+    <p>Cargar película nueva</p>
+    <hr />
+    <br />
+    <form action="/movies/create" method="post">
+      <label for="title">Titulo de la película</label>
+      <input
+        type="text"
+        name="title"
+        placeholder="Titulo de la película"
+        id="title"
+      />
+      <br />
+      <label for="rating">Rating</label>
+      <input
+        type="number"
+        name="rating"
+        placeholder="Rating de la película"
+        id="rating"
+      />
+      <br />
+      <label for="title">Premios de la película</label>
+      <input
+        type="text"
+        name="awards"
+        placeholder="Premios de la película"
+        id="awards"
+      />
+      <br />
+      <label for="title">Fecha de estreno de la película</label>
+      <input type="date" name="release_date" id="release_date" />
+      <br />
+      <label for="title">Duración de la película</label>
+      <input type="number" name="length" id="length" /><br />
+
+      <label for="title">Género de la película</label>
+      <select name="genre_id" id="genre_id">
+        <% genres.forEach(g => { %>
+        <option value="<%= g.id %> "><%= g.name %></option>
+        <% }) %>
+      </select>
+      <br />
+      <button type="submit">Cargar película</button>
+    </form>
+  </body>
+</html>

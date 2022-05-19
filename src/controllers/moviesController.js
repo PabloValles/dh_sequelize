@@ -18,12 +18,32 @@ const moviesController = {
       return res.render("newestMovies", { movies });
     });
   },
-  recomended: function (req, res) {
+  recomended: (req, res) => {
     db.Movies.findAll({
-      order: [["rating", "DESC"]],
+      where: {
+        rating: { [db.Sequelize.Op.gt]: 8 },
+      },
+      order: [["release_date", "DESC"]],
       limit: 5,
-    }).then(function (movies) {
-      return res.render("recommendedMovies", { movies });
+    }).then((movies) => {
+      res.render("recommendedMovies", { movies });
+    });
+  },
+  add: (req, res) => {
+    db.Genres.findAll().then(function (genres) {
+      return res.render("newMovie", { genres });
+    });
+  },
+  store: (req, res) => {
+    db.Movies.create({
+      title: req.body.title,
+      rating: req.body.rating,
+      awards: req.body.awards,
+      release_date: req.body.release_date,
+      length: req.body.length,
+      genre_id: req.body.genre_id,
+    }).then(() => {
+      return res.redirect("/movies");
     });
   },
 };

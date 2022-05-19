@@ -17,3 +17,9 @@ img{
 figure{
   width: 20%;
 }
+
+button a{
+  color: #444;
+  text-decoration: none;
+  padding: 1rem;
+}
