@@ -46,6 +46,11 @@ const moviesController = {
       return res.redirect("/movies");
     });
   },
+  edit: (req, res) => {
+    db.Movies.findByPk(req.params.id).then(function (movie) {
+      return res.render("editMovie", { movie });
+    });
+  },
 };
 
 module.exports = moviesController;

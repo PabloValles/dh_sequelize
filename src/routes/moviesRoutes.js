@@ -9,5 +9,7 @@ router.get("/movies/add", moviesController.add);
 router.post("/movies/create", moviesController.store);
 
 router.get("/movies/detail/:id", moviesController.detail);
+router.get("/movies/edit/:id", moviesController.edit);
+//router.post("/movies/edit/:id", moviesController.edit);
 
 module.exports = router;

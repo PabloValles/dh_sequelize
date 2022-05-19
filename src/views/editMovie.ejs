@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Movie</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      form input,
+      select {
+        padding: 0.3rem;
+        margin-top: 0.3rem;
+      }
+      button[type="submit"] {
+        padding: 0.5rem 2rem;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <figure>
+      <img src="/img/logo-DH.png" alt="Logo Digital House" />
+    </figure>
+    <p>Editar película <b><%= movie.title %></b></p>
+    <hr />
+    <br />
+    <form action="/movies/create" method="post">
+      <label for="title">Titulo de la película</label>
+      <input type="text" name="title" id="title" value="<%= movie.title %>" />
+      <br />
+      <label for="rating">Rating</label>
+      <input
+        type="number"
+        name="rating"
+        id="rating"
+        value="<%= movie.rating %>"
+      />
+      <br />
+      <label for="title">Premios de la película</label>
+      <input
+        type="text"
+        name="awards"
+        value="<%= movie.awards %>"
+        id="awards"
+      />
+      <br />
+      <% const release_date = new Date(movie.release_date); const day =
+      release_date.getDay(); const month = release_date.getMonth(); const year =
+      release_date.getFullYear(); %>
+      <label for="title">Fecha de estreno de la película</label>
+      <input type="date" name="release_date" id="release_date" value="" />
+      <%= `${year}-${month}-${day}` %>
+
+      <br />
+      <label for="title">Duración de la película</label>
+      <input
+        type="number"
+        name="length"
+        id="length"
+        value="<%= movie.length %>"
+      /><br />
+
+      <label for="title">Género de la película</label>
+      <select name="genre_id" id="genre_id">
+        <option value="<%= movie.genre_id %>" selected>
+          <%= movie.genre_id %>
+        </option>
+      </select>
+      <br />
+      <button type="submit">Modificar película</button>
+    </form>
+  </body>
+</html>
