@@ -51,6 +51,23 @@ const moviesController = {
       return res.render("editMovie", { movie });
     });
   },
+  update: (req, res) => {
+    db.Movies.update(
+      {
+        title: req.body.title,
+        rating: req.body.rating,
+        awards: req.body.awards,
+        release_date: req.body.release_date,
+        length: req.body.length,
+        genre_id: req.body.genre_id,
+      },
+      {
+        where: { id: req.params.id },
+      }
+    ).then(() => {
+      return res.redirect("/movies");
+    });
+  },
 };
 
 module.exports = moviesController;

@@ -22,7 +22,7 @@
     <p>Editar película <b><%= movie.title %></b></p>
     <hr />
     <br />
-    <form action="/movies/create" method="post">
+    <form action="/movies/edit/<%= movie.id %> " method="post">
       <label for="title">Titulo de la película</label>
       <input type="text" name="title" id="title" value="<%= movie.title %>" />
       <br />
@@ -46,7 +46,13 @@
       release_date.getDay(); const month = release_date.getMonth(); const year =
       release_date.getFullYear(); %>
       <label for="title">Fecha de estreno de la película</label>
-      <input type="date" name="release_date" id="release_date" value="" />
+      <input
+        type="date"
+        name="release_date"
+        id="release_date"
+        value=""
+        required
+      />
       <%= `${year}-${month}-${day}` %>
 
       <br />
@@ -59,7 +65,7 @@
       /><br />
 
       <label for="title">Género de la película</label>
-      <select name="genre_id" id="genre_id">
+      <select name="genre_id" id="genre_id" disabled>
         <option value="<%= movie.genre_id %>" selected>
           <%= movie.genre_id %>
         </option>
